@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('product_name');
             $table->string('category_id');
+            $table->string('warehouse_id');
+            $table->string('factory_id');
+            $table->string('rack');
             $table->string('unit_id');
             $table->string('product_code')->nullable();
             $table->integer('stock');

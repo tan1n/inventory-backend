@@ -6,6 +6,9 @@ use App\Http\Controllers\DefaultController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PosController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WarehouseController;
+use App\Http\Controllers\FactoryController;
+use App\Http\Controllers\RackController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SupplierController;
@@ -48,6 +51,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/products/import', [ProductController::class, 'import'])->name('products.import');
     Route::post('/products/import', [ProductController::class, 'handleImport'])->name('products.handleImport');
     Route::resource('/products', ProductController::class);
+    
+    // Route Warehouse
+    Route::resource('/warehouse', WarehouseController::class);
+    
+    // Route Factory
+    Route::resource('/factory', FactoryController::class);
 
     // Route POS
     Route::get('/pos', [PosController::class, 'index'])->name('pos.index');

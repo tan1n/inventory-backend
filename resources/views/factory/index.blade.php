@@ -8,22 +8,20 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-auto my-4">
                     <h1 class="page-header-title">
-                        <div class="page-header-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                        Products List
+                        <div class="page-header-icon"><i class="fa-solid fa-industry"></i></div>
+                        Factories List
                     </h1>
                 </div>
                 <div class="col-auto my-4">
-                    <a href="{{ route('products.import') }}" class="btn btn-success add-list my-1"><i class="fa-solid fa-file-import me-3"></i>Import</a>
-                    <a href="{{ route('products.export') }}" class="btn btn-warning add-list my-1"><i class="fa-solid fa-file-arrow-down me-3"></i>Export</a>
-                    <a href="{{ route('products.create') }}" class="btn btn-primary add-list my-1"><i class="fa-solid fa-plus me-3"></i>Add</a>
-                    <a href="{{ route('products.index') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
+                    <a href="{{ route('factory.create') }}" class="btn btn-primary add-list my-1"><i class="fa-solid fa-plus me-3"></i>Add</a>
+                    <a href="{{ route('factory.index') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
                 </div>
             </div>
 
             <nav class="mt-4 rounded" aria-label="breadcrumb">
                 <ol class="breadcrumb px-3 py-2 rounded mb-0">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Products</li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Factories</li>
                 </ol>
             </nav>
         </div>
@@ -54,7 +52,7 @@
         <div class="card-body">
             <div class="row mx-n4">
                 <div class="col-lg-12 card-header mt-n4">
-                    <form action="{{ route('products.index') }}" method="GET">
+                    <form action="{{ route('factory.index') }}" method="GET">
                         <div class="d-flex flex-wrap align-items-center justify-content-between">
                             <div class="form-group row align-items-center">
                                 <label for="row" class="col-auto">Row:</label>
@@ -72,7 +70,7 @@
                                 <label class="control-label col-sm-3" for="search">Search:</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input type="text" id="search" class="form-control me-1" name="search" placeholder="Search product" value="{{ request('search') }}">
+                                        <input type="text" id="search" class="form-control me-1" name="search" placeholder="Search Factory" value="{{ request('search') }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20 text-white"></i></button>
                                         </div>
@@ -91,43 +89,29 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">No.</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">@sortablelink('product_name', 'Product Name')</th>
-                                    <th scope="col">@sortablelink('category.name', 'category')</th>
-                                    <th scope="col">@sortablelink('stock')</th>
-                                    <th scope="col">@sortablelink('unit.name', 'unit')</th>
-                                    <th scope="col">@sortablelink('selling_price', 'Price')</th>
-                                    <th scope="col">@sortablelink('warehouse.name', 'warehouse')</th>
-                                    <th scope="col">@sortablelink('factory.name', 'factory')</th>
-                                    <th scope="col">@sortablelink('rack', 'rack')</th>
+                                    <th scope="col">@sortablelink('name', 'Factory Name')</th>
+                                    <th scope="col">@sortablelink('responsible_person', 'Responsible Person')</th>
+                                    <th scope="col">Contact No Responsible</th>
+                                    <th scope="col">@sortablelink('location', 'location')</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $product)
+                                @foreach ($factories as $factory)
                                 <tr>
-                                    <th scope="row">{{ (($products->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
-                                    <td>
-                                        <div style="max-height: 80px; max-width: 80px;">
-                                            <img class="img-fluid"  src="{{ $product->product_image ? asset('storage/products/'.$product->product_image) : asset('assets/img/products/default.webp') }}">
-                                        </div>
-                                    </td>
-                                    <td>{{ $product->product_name }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>{{ $product->stock }}</td>
-                                    <td>{{ $product->unit->name }}</td>
-                                    <td>{{ $product->selling_price }}</td>
-                                    <td>{{ $product->warehouse->name ?? 'None' }}</td>
-                                    <td>{{ $product->factory->name ?? 'None'}}</td>
-                                    <td>{{ $product->rack }}</td>
+                                    <th scope="row">{{ (($factories->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
+                                    <td>{{ $factory->name }}</td>
+                                    <td>{{ $factory->responsible_person}}</td>
+                                    <td>{{ $factory->contact_no_responsible }}</td>
+                                    <td>{{ $factory->location }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
-                                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-outline-primary btn-sm mx-1"><i class="fas fa-edit"></i></a>
-                                            <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                            <a href="{{ route('factory.show', $factory->id) }}" class="btn btn-outline-success btn-sm mx-1" style="height: 38px"><i class="fa-solid fa-eye"></i></a>
+                                            <a href="{{ route('factory.edit', $factory->id) }}" class="btn btn-outline-primary btn-sm mx-1" style="height: 38px"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('factory.destroy', $factory->id) }}" method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?')">
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" style="height: 38px" onclick="return confirm('Are you sure you want to delete this record?')">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
                                             </form>
@@ -140,7 +124,7 @@
                     </div>
                 </div>
 
-                {{ $products->links() }}
+                {{ $factories->links() }}
             </div>
         </div>
     </div>

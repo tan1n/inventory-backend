@@ -90,6 +90,18 @@
                                 <div class="form-control form-control-solid">{{ $product->unit->name  }}</div>
                             </div>
                         </div>
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (type of product warehouse) -->
+                            <div class="col-md-6">
+                                <label class="small mb-1">Warehouse</label>
+                                <div class="form-control form-control-solid">{{ $product->warehouse->name?? 'None'  }}</div>
+                            </div>
+                            <!-- Form Group (type of product factory) -->
+                            <div class="col-md-6">
+                                <label class="small mb-1">Factory</label>
+                                <div class="form-control form-control-solid">{{ $product->factory->name?? 'None'  }}</div>
+                            </div>
+                        </div>
                         <!-- Form Row -->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (buying price) -->
@@ -104,9 +116,17 @@
                             </div>
                         </div>
                         <!-- Form Group (stock) -->
-                        <div class="mb-3">
-                            <label class="small mb-1">Stock</label>
-                            <div class="form-control form-control-solid">{{ $product->stock  }}</div>
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (type of product warehouse) -->
+                            <div class="col-md-6">
+                                <label class="small mb-1">Stock</label>
+                                <div class="form-control form-control-solid">{{ $product->stock  }}</div>
+                            </div>
+                            <!-- Form Group (type of product factory) -->
+                            <div class="col-md-6">
+                                <label class="small mb-1">Rack</label>
+                                <div class="form-control form-control-solid">{{ $product->rack}}</div>
+                            </div>
                         </div>
 
                         <!-- Submit button -->

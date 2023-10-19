@@ -13,6 +13,9 @@ class Product extends Model
     protected $fillable = [
         'product_name',
         'category_id',
+        'warehouse_id',
+        'factory_id',
+        'rack',
         'unit_id',
         'product_code',
         'stock',
@@ -24,6 +27,9 @@ class Product extends Model
     public $sortable = [
         'product_name',
         'category_id',
+        'warehouse_id',
+        'factory_id',
+        'rack',
         'unit_id',
         'product_code',
         'stock',
@@ -37,15 +43,27 @@ class Product extends Model
 
     protected $with = [
         'category',
-        'unit'
+        'unit',
+        'warehouse',
+        'factory',
     ];
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
     }
+
     public function unit(){
         return $this->belongsTo(Unit::class, 'unit_id');
     }
+
+    public function warehouse(){
+        return $this->belongsTo(Warehouse::class, 'warehouse_id');
+    }
+    
+    public function factory(){
+        return $this->belongsTo(Factory::class, 'factory_id');
+    }
+    
 
     public function scopeFilter($query, array $filters)
     {

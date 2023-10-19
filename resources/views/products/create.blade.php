@@ -105,6 +105,38 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (type of product Warehouse) -->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="warehouse_id">Warehouse<span class="text-danger">*</span></label>
+                                <select class="form-select form-control-solid @error('warehouse_id') is-invalid @enderror" id="warehouse_id" name="warehouse_id">
+                                    <option selected="" disabled="">Select a Warehouse:</option>
+                                    @foreach ($warehouses as $warehouse)
+                                    <option value="{{ $warehouse->id }}" @if(old('warehouse_id') == $warehouse->id) selected="selected" @endif>{{ $warehouse->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('warehouse_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <!-- Form Group (type of product Factory) -->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="factory_id">Factory<span class="text-danger">*</span></label>
+                                <select class="form-select form-control-solid @error('factory_id') is-invalid @enderror" id="factory_id" name="factory_id">
+                                    <option selected="" disabled="">Select a factory:</option>
+                                    @foreach ($factories as $factory)
+                                    <option value="{{ $factory->id }}" @if(old('factory_id') == $factory->id) selected="selected" @endif>{{ $factory->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('factory_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
                         <!-- Form Row -->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (buying price) -->
@@ -128,17 +160,29 @@
                                 @enderror
                             </div>
                         </div>
-                        <!-- Form Group (stock) -->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="stock">Stock <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-solid @error('stock') is-invalid @enderror" id="stock" name="stock" type="text" placeholder="" value="{{ old('stock') }}" autocomplete="off" />
-                            @error('stock')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (buying price) -->
+                            <div class="mb-3 col-md-6">
+                                <label class="small mb-1" for="stock">Stock <span class="text-danger">*</span></label>
+                                <input class="form-control form-control-solid @error('stock') is-invalid @enderror" id="stock" name="stock" type="text" placeholder="" value="{{ old('stock') }}" autocomplete="off" />
+                                @error('stock')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
+                            <!-- Form Group (selling price) -->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="rack">Rack <span class="text-danger">*</span></label>
+                                <input class="form-control form-control-solid @error('rack') is-invalid @enderror" id="rack" name="rack" type="text" placeholder="" value="{{ old('rack') }}" autocomplete="off" />
+                                @error('rack')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-
+                        <!-- Form Group (stock) -->
                         <!-- Submit button -->
                         <button class="btn btn-primary" type="submit">Save</button>
                         <a class="btn btn-danger" href="{{ route('products.index') }}">Cancel</a>

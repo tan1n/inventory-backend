@@ -82,6 +82,14 @@
                 <div class="nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
                 Products
             </a>
+            <a class="nav-link {{ Request::is('warehouse*') ? 'active' : '' }}" href="{{ route('warehouse.index') }}">
+                <div class="nav-link-icon"><i class="fa-solid fa-warehouse"></i></div>
+                Warehouses
+            </a>
+            <a class="nav-link {{ Request::is('actory*') ? 'active' : '' }}" href="{{ route('factory.index') }}">
+                <div class="nav-link-icon"><i class="fa-solid fa-industry"></i></div>
+                Factories
+            </a>
             <a class="nav-link {{ Request::is('categories*') ? 'active' : '' }}" href="{{ route('categories.index') }}">
                 <div class="nav-link-icon"><i class="fa-solid fa-folder"></i></div>
                 Categories

@@ -6,6 +6,8 @@ use Exception;
 use App\Models\Unit;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Factory;
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -28,14 +30,14 @@ class ProductController extends Controller
             abort(400, 'The per-page parameter must be an integer between 1 and 100.');
         }
 
-        $products = Product::with(['category', 'unit'])
+        $products = Product::with(['category', 'unit', 'warehouse', 'factory',])
                 ->filter(request(['search']))
                 ->sortable()
                 ->paginate($row)
                 ->appends(request()->query());
 
         return view('products.index', [
-            'products' => $products,
+            'products' => $products
         ]);
     }
 
@@ -47,6 +49,8 @@ class ProductController extends Controller
         return view('products.create', [
             'categories' => Category::all(),
             'units' => Unit::all(),
+            'warehouses' => Warehouse::all(),
+            'factories' => Factory::all(),
         ]);
     }
 
@@ -55,6 +59,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
         $product_code = IdGenerator::generate([
             'table' => 'products',
             'field' => 'product_code',
@@ -66,6 +71,9 @@ class ProductController extends Controller
             'product_image' => 'image|file|max:2048',
             'product_name' => 'required|string',
             'category_id' => 'required|integer',
+            'warehouse_id' => 'required|integer',
+            'factory_id' => 'required|integer',
+            'rack' => 'required|integer',
             'unit_id' => 'required|integer',
             'stock' => 'required|integer',
             'buying_price' => 'required|integer',
@@ -76,7 +84,7 @@ class ProductController extends Controller
 
         // Save product code value
         $validatedData['product_code'] = $product_code;
-
+        
         /**
          * Handle upload image
          */
@@ -120,6 +128,8 @@ class ProductController extends Controller
         return view('products.edit', [
             'categories' => Category::all(),
             'units' => Unit::all(),
+            'warehouses' => Warehouse::all(),
+            'factories' => Factory::all(),
             'product' => $product
         ]);
     }
@@ -133,6 +143,9 @@ class ProductController extends Controller
             'product_image' => 'image|file|max:2048',
             'product_name' => 'required|string',
             'category_id' => 'required|integer',
+            'warehouse_id' => 'required|integer',
+            'factory_id' => 'required|integer',
+            'rack' => 'required|integer',
             'unit_id' => 'required|integer',
             'stock' => 'required|integer',
             'buying_price' => 'required|integer',
@@ -213,6 +226,9 @@ class ProductController extends Controller
                 $data[] = [
                     'product_name' => $sheet->getCell( 'A' . $row )->getValue(),
                     'category_id' => $sheet->getCell( 'B' . $row )->getValue(),
+                    'warehouse_id' => $sheet->getCell( 'B' . $row )->getValue(),
+                    'factory_id' => $sheet->getCell( 'B' . $row )->getValue(),
+                    'rack' => $sheet->getCell( 'B' . $row )->getValue(),
                     'unit_id' => $sheet->getCell( 'C' . $row )->getValue(),
                     'product_code' => $sheet->getCell( 'D' . $row )->getValue(),
                     'stock' => $sheet->getCell( 'E' . $row )->getValue(),
@@ -241,6 +257,9 @@ class ProductController extends Controller
         $product_array [] = array(
             'Product Name',
             'Category Id',
+            'Warehouse Id',
+            'Factory Id',
+            'Rack',
             'Unit Id',
             'Product Code',
             'Stock',
@@ -254,6 +273,9 @@ class ProductController extends Controller
             $product_array[] = array(
                 'Product Name' => $product->product_name,
                 'Category Id' => $product->category_id,
+                'Warehouse Id' => $product->warehouse_id,
+                'Factory Id' => $product->factory_id,
+                'Rack' => $product->rack,
                 'Unit Id' => $product->unit_id,
                 'Product Code' => $product->product_code,
                 'Stock' => $product->stock,
