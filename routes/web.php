@@ -28,7 +28,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return abort(403);
+});
+
+Route::get('/migrate', function(){
+    // \Artisan::call('migrate');
+    \App\Models\User::create([
+        'username' => 'admin',
+        'name' => 'Inventory admin',
+        'email' => 'inventory@attireerp.com',
+        'password' => \Hash::make('12345678')
+    ]);
+    dd('migrated!');
 });
 
 Route::get('/dashboard', function () {

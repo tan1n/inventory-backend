@@ -100,6 +100,18 @@ class ProductController extends Controller
         }
 
         Product::create($validatedData);
+        
+        
+        $id = Product::create($validatedData)->id;
+        
+        if($request->category_id == 1 || $request->category_id == 2){
+            $url = $_ENV['ERP_URL'] . 'inventory-product';
+            $response = Http::post( $url, [
+                'id' => $id,
+                'name' => $request->product_name,
+                'table_type' => $request->category_id
+            ]);
+        }
 
         return Redirect::route('products.index')->with('success', 'Product has been created!');
     }

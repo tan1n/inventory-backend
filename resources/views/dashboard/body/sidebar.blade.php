@@ -8,39 +8,39 @@
                 <div class="nav-link-icon"><i data-feather="activity"></i></div>
                 Dashboard
             </a>
-            <a class="nav-link {{ Request::is('pos*') ? 'active' : '' }}" href="{{ route('pos.index') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                POS
-            </a>
+            {{-- <!--<a class="nav-link {{ Request::is('pos*') ? 'active' : '' }}" href="{{ route('pos.index') }}">-->
+            <!--    <div class="nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>-->
+            <!--    POS-->
+            <!--</a>-->
 
             <!-- Sidenav Heading (Orders)-->
-            <div class="sidenav-menu-heading">Orders</div>
-            <a class="nav-link {{ Request::is('orders/complete*') ? 'active' : '' }}" href="{{ route('order.completeOrders') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-circle-check"></i></div>
-                Complete
-            </a>
-            <a class="nav-link {{ Request::is('orders/pending*') ? 'active' : '' }}" href="{{ route('order.pendingOrders') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-clock"></i></div>
-                Pending
-            </a>
-            <a class="nav-link {{ Request::is('orders/due*') ? 'active' : '' }}" href="{{ route('order.dueOrders') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-credit-card"></i></div>
-                Due
-            </a>
+            <!--<div class="sidenav-menu-heading">Orders</div>-->
+            <!--<a class="nav-link {{ Request::is('orders/complete*') ? 'active' : '' }}" href="{{ route('order.completeOrders') }}">-->
+            <!--    <div class="nav-link-icon"><i class="fa-solid fa-circle-check"></i></div>-->
+            <!--    Complete-->
+            <!--</a>-->
+            <!--<a class="nav-link {{ Request::is('orders/pending*') ? 'active' : '' }}" href="{{ route('order.pendingOrders') }}">-->
+            <!--    <div class="nav-link-icon"><i class="fa-solid fa-clock"></i></div>-->
+            <!--    Pending-->
+            <!--</a>-->
+            <!--<a class="nav-link {{ Request::is('orders/due*') ? 'active' : '' }}" href="{{ route('order.dueOrders') }}">-->
+            <!--    <div class="nav-link-icon"><i class="fa-solid fa-credit-card"></i></div>-->
+            <!--    Due-->
+            <!--</a>-->
             <!-- Sidenav Heading (Purchases)-->
-            <div class="sidenav-menu-heading">Purchases</div>
-            <a class="nav-link {{ Request::is('purchases', 'purchase/create*', 'purchases/details*') ? 'active' : '' }}" href="{{ route('purchases.allPurchases') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-cash-register"></i></div>
-                All
-            </a>
-            <a class="nav-link {{ Request::is('purchases/approved*') ? 'active' : '' }}" href="{{ route('purchases.approvedPurchases') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-circle-check"></i></div>
-                Approval
-            </a>
-            <a class="nav-link {{ Request::is('purchases/report*') ? 'active' : '' }}" href="{{ route('purchases.dailyPurchaseReport') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-flag"></i></div>
-                Daily Purchase Report
-            </a>
+            <!--<div class="sidenav-menu-heading">Purchases</div>-->
+            <!--<a class="nav-link {{ Request::is('purchases', 'purchase/create*', 'purchases/details*') ? 'active' : '' }}" href="{{ route('purchases.allPurchases') }}">-->
+            <!--    <div class="nav-link-icon"><i class="fa-solid fa-cash-register"></i></div>-->
+            <!--    All-->
+            <!--</a>-->
+            <!--<a class="nav-link {{ Request::is('purchases/approved*') ? 'active' : '' }}" href="{{ route('purchases.approvedPurchases') }}">-->
+            <!--    <div class="nav-link-icon"><i class="fa-solid fa-circle-check"></i></div>-->
+            <!--    Approval-->
+            <!--</a>-->
+            <!--<a class="nav-link {{ Request::is('purchases/report*') ? 'active' : '' }}" href="{{ route('purchases.dailyPurchaseReport') }}">-->
+            <!--    <div class="nav-link-icon"><i class="fa-solid fa-flag"></i></div>-->
+            <!--    Daily Purchase Report-->
+            <!--</a>--> --}}
 
             <!-- Sidenav Accordion (Pages)-->
             {{-- <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -65,16 +65,16 @@
                 </nav>
             </div> --}}
 
-            <!-- Sidenav Heading (Pages)-->
-            <div class="sidenav-menu-heading">Pages</div>
-            <a class="nav-link {{ Request::is('customers*') ? 'active' : '' }}" href="{{ route('customers.index') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-users"></i></div>
-                Customers
-            </a>
-            <a class="nav-link {{ Request::is('suppliers*') ? 'active' : '' }}" href="{{ route('suppliers.index') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-users"></i></div>
-                Suppliers
-            </a>
+            {{-- <!-- Sidenav Heading (Pages)-->
+            <!--<div class="sidenav-menu-heading">Pages</div>-->
+            <!--<a class="nav-link {{ Request::is('customers*') ? 'active' : '' }}" href="{{ route('customers.index') }}">-->
+            <!--    <div class="nav-link-icon"><i class="fa-solid fa-users"></i></div>-->
+            <!--    Customers-->
+            <!--</a>-->
+            <!--<a class="nav-link {{ Request::is('suppliers*') ? 'active' : '' }}" href="{{ route('suppliers.index') }}">-->
+            <!--    <div class="nav-link-icon"><i class="fa-solid fa-users"></i></div>-->
+            <!--    Suppliers-->
+            <!--</a>--> --}}
 
             <!-- Sidenav Heading (Products)-->
             <div class="sidenav-menu-heading">Products</div>

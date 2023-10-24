@@ -23,7 +23,7 @@
                         <div class="page-header-icon"><i data-feather="activity"></i></div>
                         Dashboard
                     </h1>
-                    <div class="page-header-subtitle">Example dashboard overview and content summary</div>
+                    <div class="page-header-subtitle">Dashboard overview and content summary</div>
                 </div>
                 <div class="col-12 col-xl-auto mt-4">
                     <div class="input-group input-group-joined border-0" style="width: 16.5rem">
@@ -45,7 +45,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="me-3">
-                            <div class="text-white-75 small">Earnings (Monthly)</div>
+                            <div class="text-white-75 small">TOTAL WORK ORDERS (Monthly)</div>
                             <div class="text-lg fw-bold">$40,000</div>
                         </div>
                         <i class="feather-xl text-white-50" data-feather="calendar"></i>
@@ -62,7 +62,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="me-3">
-                            <div class="text-white-75 small">Earnings (Annual)</div>
+                            <div class="text-white-75 small">TOTAL WORK ORDERS (Annual)</div>
                             <div class="text-lg fw-bold">$215,000</div>
                         </div>
                         <i class="feather-xl text-white-50" data-feather="dollar-sign"></i>
@@ -114,7 +114,7 @@
         <div class="col-xl-6 mb-4">
             <div class="card card-header-actions h-100">
                 <div class="card-header">
-                    Earnings Breakdown
+                    Breakdown
                     <div class="dropdown no-caret">
                         <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="areaChartDropdownExample" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-gray-500" data-feather="more-vertical"></i></button>
                         <div class="dropdown-menu dropdown-menu-end animated--fade-in-up" aria-labelledby="areaChartDropdownExample">
@@ -135,7 +135,7 @@
         <div class="col-xl-6 mb-4">
             <div class="card card-header-actions h-100">
                 <div class="card-header">
-                    Monthly Revenue
+                    Monthly Purchase
                     <div class="dropdown no-caret">
                         <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="areaChartDropdownExample" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-gray-500" data-feather="more-vertical"></i></button>
                         <div class="dropdown-menu dropdown-menu-end animated--fade-in-up" aria-labelledby="areaChartDropdownExample">
