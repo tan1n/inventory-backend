@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('purchase_order_items', function (Blueprint $table) {
             $table->id();
             $table->string('purchase_order_info_id');
+            $table->foreignId('product_id')->nullable();
             $table->string('item')->nullable();
             $table->string('shade')->nullable();
             $table->string('dimension')->nullable();
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->decimal('quantity_cone',20,4)->nullable();
             $table->decimal('unit_price', 20, 10)->nullable();
             $table->decimal('total_price',20,4)->nullable();
+            $table->enum('status', ['complete','pending','ongoing'])->default('pending');
             $table->text('remarks')->nullable();
             $table->timestamps();
         });

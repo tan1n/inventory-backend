@@ -103,7 +103,7 @@
             <div class="sidenav-menu-heading">Purchase Orders</div>
             <a class="nav-link {{ Request::is('purchaseorderinfo*') ? 'active' : '' }}" href="{{ route('purchaseorderinfo.index') }}">
                 <div class="nav-link-icon"><i class="fa-solid fa-shopping-cart"></i></div>
-                Purchase Order Info
+                Purchase Orders
             </a>
 
             <!-- Sidenav Heading (Settings)-->

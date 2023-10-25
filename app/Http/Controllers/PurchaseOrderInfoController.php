@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PurchaseOrderInfo;
+use App\Models\PurchaseOrderItem;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Supplier;
@@ -50,7 +51,18 @@ class PurchaseOrderInfoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $row = (int) request('row', 10);
+
+        // if ($row < 1 || $row > 100) {
+        //     abort(400, 'The per-page parameter must be an integer between 1 and 100.');
+        // }
+        $purchase_order_info = PurchaseOrderInfo::findorfail($id);
+        $purchase_order_items = PurchaseOrderItem::where('purchase_order_info_id', $id)->get();
+
+        return view('purchaseorderinfo.show', [
+            'purchase_order_info'=> $purchase_order_info,
+            'purchase_order_items'=> $purchase_order_items
+        ]);
     }
 
     /**

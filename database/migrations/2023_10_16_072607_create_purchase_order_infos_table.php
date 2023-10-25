@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('customer_id')->nullable();
             $table->string('delivery_place')->nullable();
             $table->date('date')->nullable();
+            $table->enum('status', ['complete','pending','ongoing'])->default('pending');
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@
                 <div class="col-auto my-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-shopping-cart"></i></div>
-                        Purchase Order Infos
+                        Purchase Orders
                     </h1>
                 </div>
                 <div class="col-auto my-4">
@@ -23,7 +23,7 @@
             <nav class="mt-4 rounded" aria-label="breadcrumb">
                 <ol class="breadcrumb px-3 py-2 rounded mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Purchase Order Infos</li>
+                    <li class="breadcrumb-item active">Purchase Orders</li>
                 </ol>
             </nav>
         </div>
@@ -87,21 +87,19 @@
 
                 <div class="col-lg-12">
                     <div class="table-responsive">
-                        <table class="table table-striped align-middle">
+                        <table class="table table-striped text-center align-middle">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">@sortablelink('title', 'Title')</th>
                                     <th scope="col">@sortablelink('responsible_person', 'Responsible Person')</th>
                                     <th scope="col">@sortablelink('ref_no', 'Reference No')</th>
-                                    <th scope="col">@sortablelink('user.name', 'User')</th>
                                     <th scope="col">@sortablelink('po_ref', 'PO reference')</th>
                                     <th scope="col">@sortablelink('supplier.name', 'Supplier')</th>
                                     <th scope="col">@sortablelink('customer.name', 'Customer')</th>
-                                    <th scope="col">@sortablelink('delivery_place', 'Delivery Place')</th>
                                     <th scope="col">@sortablelink('status', 'Status')</th>
                                     <th scope="col">@sortablelink('date', 'date')</th>
-                                    {{-- <th scope="col">Action</th> --}}
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -111,26 +109,16 @@
                                     <td>{{ $purchase_order_info->title }}</td>
                                     <td>{{ $purchase_order_info->responsible_person}}</td>
                                     <td>{{ $purchase_order_info->ref_no  }}</td>
-                                    <td>{{ $purchase_order_info->user->name?? 'None' }}</td>
                                     <td>{{ $purchase_order_info->po_ref }}</td>
                                     <td>{{ $purchase_order_info->supplier->name?? 'None' }}</td>
                                     <td>{{ $purchase_order_info->customer->name?? 'None' }}</td>
-                                    <td>{{ $purchase_order_info->delivery_place}}</td>
                                     <td>{{ $purchase_order_info->status}}</td>
                                     <td>{{ $purchase_order_info->date}}</td>
-                                    {{-- <td>
+                                    <td>
                                         <div class="d-flex">
                                             <a href="{{ route('purchaseorderinfo.show', $purchase_order_info->id) }}" class="btn btn-outline-success btn-sm mx-1" style="height: 38px"><i class="fa-solid fa-eye"></i></a>
-                                            <a href="{{ route('purchaseorderinfo.edit', $purchase_order_info->id) }}" class="btn btn-outline-primary btn-sm mx-1" style="height: 38px"><i class="fas fa-edit"></i></a>
-                                            <form action="{{ route('purchaseorderinfo.destroy', $purchase_order_info->id) }}" method="POST">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" style="height: 38px" onclick="return confirm('Are you sure you want to delete this record?')">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
-                                            </form>
                                         </div>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
