@@ -20,6 +20,7 @@ class PurchaseOrderInfo extends Model
         'customer_id',
         'delivery_place',
         'date',
+        'status'
     ];
     
     protected $guarded = [

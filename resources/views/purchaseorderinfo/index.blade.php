@@ -11,12 +11,12 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-auto my-4">
                     <h1 class="page-header-title">
-                        <div class="page-header-icon"><i class="fa-solid fa-warehouse"></i></div>
+                        <div class="page-header-icon"><i class="fa-solid fa-shopping-cart"></i></div>
                         Purchase Order Infos
                     </h1>
                 </div>
                 <div class="col-auto my-4">
-                    <a href="{{ route('warehouse.index') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
+                    <a href="{{ route('purchaseorderinfo.index') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
                 </div>
             </div>
 
@@ -99,6 +99,7 @@
                                     <th scope="col">@sortablelink('supplier.name', 'Supplier')</th>
                                     <th scope="col">@sortablelink('customer.name', 'Customer')</th>
                                     <th scope="col">@sortablelink('delivery_place', 'Delivery Place')</th>
+                                    <th scope="col">@sortablelink('status', 'Status')</th>
                                     <th scope="col">@sortablelink('date', 'date')</th>
                                     {{-- <th scope="col">Action</th> --}}
                                 </tr>
@@ -115,7 +116,8 @@
                                     <td>{{ $purchase_order_info->supplier->name?? 'None' }}</td>
                                     <td>{{ $purchase_order_info->customer->name?? 'None' }}</td>
                                     <td>{{ $purchase_order_info->delivery_place}}</td>
-                                    <td>{{ $purchase_order_info->delivery_place}}</td>
+                                    <td>{{ $purchase_order_info->status}}</td>
+                                    <td>{{ $purchase_order_info->date}}</td>
                                     {{-- <td>
                                         <div class="d-flex">
                                             <a href="{{ route('purchaseorderinfo.show', $purchase_order_info->id) }}" class="btn btn-outline-success btn-sm mx-1" style="height: 38px"><i class="fa-solid fa-eye"></i></a>
