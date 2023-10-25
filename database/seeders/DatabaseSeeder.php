@@ -33,16 +33,16 @@ class DatabaseSeeder extends Seeder
         Category::factory(5)->create();
         Unit::factory(5)->create();
 
-        for ($i=0; $i < 10; $i++) {
-            Product::factory()->create([
-                'product_code' => IdGenerator::generate([
-                    'table' => 'products',
-                    'field' => 'product_code',
-                    'length' => 4,
-                    'prefix' => 'PC'
-                ]),
-            ]);
-        }
+        // for ($i=0; $i < 10; $i++) {
+        //     Product::factory()->create([
+        //         'product_code' => IdGenerator::generate([
+        //             'table' => 'products',
+        //             'field' => 'product_code',
+        //             'length' => 4,
+        //             'prefix' => 'PC'
+        //         ]),
+        //     ]);
+        // }
 
     }
 }

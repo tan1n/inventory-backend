@@ -11,6 +11,7 @@ use App\Http\Controllers\FactoryController;
 use App\Http\Controllers\RackController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PurchaseOrderInfoController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
@@ -68,6 +69,10 @@ Route::middleware('auth')->group(function () {
     
     // Route Factory
     Route::resource('/factory', FactoryController::class);
+    //Route Purchase Order Info
+    Route::resource('/factory', FactoryController::class);
+
+    Route::resource('/purchaseorderinfo', PurchaseOrderInfoController::class);
 
     // Route POS
     Route::get('/pos', [PosController::class, 'index'])->name('pos.index');

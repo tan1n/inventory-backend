@@ -1,7 +1,6 @@
-{{-- @foreach ($warehouses as $warehouse )
-    {{$warehouse->name}}
+{{-- @foreach ($purchase_order_infos as $purchase_order_info )
+    {{$purchase_order_info->title}}
 @endforeach --}}
-
 @extends('dashboard.body.main')
 
 @section('content')
@@ -13,11 +12,10 @@
                 <div class="col-auto my-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-warehouse"></i></div>
-                        Warehouses List
+                        Purchase Order Infos
                     </h1>
                 </div>
                 <div class="col-auto my-4">
-                    <a href="{{ route('warehouse.create') }}" class="btn btn-primary add-list my-1"><i class="fa-solid fa-plus me-3"></i>Add</a>
                     <a href="{{ route('warehouse.index') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
                 </div>
             </div>
@@ -25,7 +23,7 @@
             <nav class="mt-4 rounded" aria-label="breadcrumb">
                 <ol class="breadcrumb px-3 py-2 rounded mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Warehouses</li>
+                    <li class="breadcrumb-item active">Purchase Order Infos</li>
                 </ol>
             </nav>
         </div>
@@ -56,7 +54,7 @@
         <div class="card-body">
             <div class="row mx-n4">
                 <div class="col-lg-12 card-header mt-n4">
-                    <form action="{{ route('warehouse.index') }}" method="GET">
+                    <form action="{{ route('purchaseorderinfo.index') }}" method="GET">
                         <div class="d-flex flex-wrap align-items-center justify-content-between">
                             <div class="form-group row align-items-center">
                                 <label for="row" class="col-auto">Row:</label>
@@ -74,7 +72,7 @@
                                 <label class="control-label col-sm-3" for="search">Search:</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input type="text" id="search" class="form-control me-1" name="search" placeholder="Search Warehouse" value="{{ request('search') }}">
+                                        <input type="text" id="search" class="form-control me-1" name="search" placeholder="Search Purchase Order Infos" value="{{ request('search') }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20 text-white"></i></button>
                                         </div>
@@ -93,26 +91,36 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">No.</th>
-                                    <th scope="col">@sortablelink('name', 'Warehouse Name')</th>
+                                    <th scope="col">@sortablelink('title', 'Title')</th>
                                     <th scope="col">@sortablelink('responsible_person', 'Responsible Person')</th>
-                                    <th scope="col">Contact No Responsible</th>
-                                    <th scope="col">@sortablelink('location', 'location')</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">@sortablelink('ref_no', 'Reference No')</th>
+                                    <th scope="col">@sortablelink('user.name', 'User')</th>
+                                    <th scope="col">@sortablelink('po_ref', 'PO reference')</th>
+                                    <th scope="col">@sortablelink('supplier.name', 'Supplier')</th>
+                                    <th scope="col">@sortablelink('customer.name', 'Customer')</th>
+                                    <th scope="col">@sortablelink('delivery_place', 'Delivery Place')</th>
+                                    <th scope="col">@sortablelink('date', 'date')</th>
+                                    {{-- <th scope="col">Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($warehouses as $warehouse)
+                                @foreach ($purchase_order_infos as $purchase_order_info)
                                 <tr>
-                                    <th scope="row">{{ (($warehouses->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
-                                    <td>{{ $warehouse->name }}</td>
-                                    <td>{{ $warehouse->responsible_person}}</td>
-                                    <td>{{ $warehouse->contact_no_responsible }}</td>
-                                    <td>{{ $warehouse->location }}</td>
-                                    <td>
+                                    <th scope="row">{{ (($purchase_order_infos->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
+                                    <td>{{ $purchase_order_info->title }}</td>
+                                    <td>{{ $purchase_order_info->responsible_person}}</td>
+                                    <td>{{ $purchase_order_info->ref_no  }}</td>
+                                    <td>{{ $purchase_order_info->user->name?? 'None' }}</td>
+                                    <td>{{ $purchase_order_info->po_ref }}</td>
+                                    <td>{{ $purchase_order_info->supplier->name?? 'None' }}</td>
+                                    <td>{{ $purchase_order_info->customer->name?? 'None' }}</td>
+                                    <td>{{ $purchase_order_info->delivery_place}}</td>
+                                    <td>{{ $purchase_order_info->delivery_place}}</td>
+                                    {{-- <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('warehouse.show', $warehouse->id) }}" class="btn btn-outline-success btn-sm mx-1" style="height: 38px"><i class="fa-solid fa-eye"></i></a>
-                                            <a href="{{ route('warehouse.edit', $warehouse->id) }}" class="btn btn-outline-primary btn-sm mx-1" style="height: 38px"><i class="fas fa-edit"></i></a>
-                                            <form action="{{ route('warehouse.destroy', $warehouse->id) }}" method="POST">
+                                            <a href="{{ route('purchaseorderinfo.show', $purchase_order_info->id) }}" class="btn btn-outline-success btn-sm mx-1" style="height: 38px"><i class="fa-solid fa-eye"></i></a>
+                                            <a href="{{ route('purchaseorderinfo.edit', $purchase_order_info->id) }}" class="btn btn-outline-primary btn-sm mx-1" style="height: 38px"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('purchaseorderinfo.destroy', $purchase_order_info->id) }}" method="POST">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" style="height: 38px" onclick="return confirm('Are you sure you want to delete this record?')">
@@ -120,7 +128,7 @@
                                                 </button>
                                             </form>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -128,7 +136,7 @@
                     </div>
                 </div>
 
-                {{ $warehouses->links() }}
+                {{ $purchase_order_infos->links() }}
             </div>
         </div>
     </div>
