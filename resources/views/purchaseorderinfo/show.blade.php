@@ -47,7 +47,90 @@
 
 
 <!-- BEGIN: Main Page Content -->
-<div class="container px-2 mt-n10">
+<div class="container-xl px-2 mt-n10">
+    <div class="row">
+        <div class="col-xl-12">
+            <!-- BEGIN: Product Information -->
+            <div class="card mb-12">
+                <div class="card-header">
+                    Product Information
+                </div>
+                <div class="card-body">
+                    <!-- Form Group (product name) -->
+                    <div class="mb-3">
+                        <label class="small mb-1">Title</label>
+                            <div class="form-control form-control-solid">{{ $purchase_order_info->title }}</div>
+                        
+                    </div>
+                    <!-- Form Row -->
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (type of product category) -->
+                        <div class="col-md-6">
+                            <label class="small mb-1">Reference No</label>
+                        <div class="form-control form-control-solid">{{ $purchase_order_info->ref_no }}</div>
+                        </div>
+                        <!-- Form Group (type of product unit) -->
+                        <div class="col-md-6">
+                            <label class="small mb-1">Responsible Person</label>
+                            <div class="form-control form-control-solid">{{ $purchase_order_info->responsible_person }}</div>
+                        </div>
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (type of product warehouse) -->
+                        <div class="col-md-6">
+                            <label class="small mb-1">User</label>
+                            <div class="form-control form-control-solid">{{ $purchase_order_info->user->name }}</div>
+                        </div>
+                        <!-- Form Group (type of product factory) -->
+                        <div class="col-md-6">
+                            <label class="small mb-1">PO Ref</label>
+                            <div class="form-control form-control-solid">{{ $purchase_order_info->po_ref }}</div>
+                        </div>
+                    </div>
+                    <!-- Form Row -->
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (buying price) -->
+                        <div class="col-md-6">
+                            <label class="small mb-1">Supplier</label>
+                            <div class="form-control form-control-solid">{{ $purchase_order_info->supplier->name }}</div>
+                        </div>
+                        <!-- Form Group (selling price) -->
+                        <div class="col-md-6">
+                            <label class="small mb-1">Customer</label>
+                            <div class="form-control form-control-solid">{{ $purchase_order_info->customer->name }}</div>
+                        </div>
+                    </div>
+                    <!-- Form Group (stock) -->
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (type of product warehouse) -->
+                        <div class="col-md-6">
+                            <label class="small mb-1">Delivery Place</label>
+                            <div class="form-control form-control-solid">{{ $purchase_order_info->delivery_place }}</div>
+                        </div>
+                        <!-- Form Group (type of product factory) -->
+                        <div class="col-md-6">
+                            <label class="small mb-1">Date</label>
+                            <div class="form-control form-control-solid">{{ $purchase_order_info->date}}</div>
+                        </div>
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <div class="col-md-12">
+                            <label class="small mb-1">Status</label>
+                            <div class="form-control form-control-solid">{{ $purchase_order_info->status}}</div>
+                        </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <a class="btn btn-primary" href="{{ route('products.index') }}">Back</a>
+                </div>
+            </div>
+            <!-- END: Product Information -->
+        </div>
+    </div>
+</form>
+</div>
+<!-- BEGIN: Main Page Table Content -->
+<div class="container px-2 mt-10">
     <div class="card mb-4">
         <div class="card-body">
             <div class="row mx-n4">
@@ -111,7 +194,11 @@
                                     <td>{{ number_format($total_price , 4)}}</td>
                                     <td>{{ $purchase_order_item->status}}</td>
                                     <td>{{ $purchase_order_item->remarks}}</td>
-                                    <td></td>
+                                    <td>
+                                        <div class="d-flex">
+                                        <a href="{{ route('purchaseorderinfo.show', $purchase_order_info->id) }}" class="btn btn-outline-info btn-sm mx-1" style="height: 38px"><i class="fa-solid fa-file-pen"></i></a>
+                                    </div>
+                                </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -122,5 +209,6 @@
         </div>
     </div>
 </div>
+<!-- END: Main Page Table Content -->
 <!-- END: Main Page Content -->
 @endsection
