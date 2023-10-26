@@ -53,7 +53,7 @@
             <!-- BEGIN: Product Information -->
             <div class="card mb-12">
                 <div class="card-header">
-                    Product Information
+                    Purchase Order Information
                 </div>
                 <div class="card-body">
                     <!-- Form Group (product name) -->
@@ -121,7 +121,7 @@
                     </div>
 
                     <!-- Submit button -->
-                    <a class="btn btn-primary" href="{{ route('products.index') }}">Back</a>
+                    <a class="btn btn-primary" href="{{ route('purchaseorderinfo.index') }}">Back</a>
                 </div>
             </div>
             <!-- END: Product Information -->
@@ -130,7 +130,7 @@
 </form>
 </div>
 <!-- BEGIN: Main Page Table Content -->
-<div class="container px-2 mt-10">
+<div class="container-fluid px-2 mt-10">
     <div class="card mb-4">
         <div class="card-body">
             <div class="row mx-n4">
@@ -140,29 +140,31 @@
                             <thead>
                               <tr>
                                 <th scope="col">No.</th>                                    
-                                    <th scope="col">Item</th>
-                                    <th scope="col">Shade</th>
-                                    <th scope="col">Dimension</th>
-                                    <th scope="col">UOM</th>
-                                    <th scope="col">Color</th>
-                                    <th scope="col">Size</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Value</th>
-                                    <th scope="col">Style Name</th>
-                                    <th scope="col">Count</th>
-                                    <th scope="col">Meter</th>
-                                    <th scope="col">Quantity Cone</th>
-                                    <th scope="col">Unit Price</th>
-                                    <th scope="col">Total Price</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Remarks</th>
-                                    <th scope="col">Action</th>
+                                <th scope="col">Product Name</th>                                    
+                                <th scope="col">Item</th>
+                                <th scope="col">Shade</th>
+                                <th scope="col">Dimension</th>
+                                <th scope="col">UOM</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Value</th>
+                                <th scope="col">Style Name</th>
+                                <th scope="col">Count</th>
+                                <th scope="col">Meter</th>
+                                <th scope="col">Quantity Cone</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Total Price</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Remarks</th>
+                                <th scope="col">Action</th>
                               </tr>
                             </thead>
                             <tbody>
                                 @foreach ($purchase_order_items as $purchase_order_item)
                                 <tr>
                                     <th scope="row">{{$loop->iteration  }}</th>
+                                    <td>{{ $purchase_order_item->product->product_name}}</td>
                                     <td>{{ $purchase_order_item->item}}</td>
                                     <td>{{ $purchase_order_item->shade  }}</td>
                                     <td>{{ $purchase_order_item->dimension }}</td>
@@ -195,10 +197,11 @@
                                     <td>{{ $purchase_order_item->status}}</td>
                                     <td>{{ $purchase_order_item->remarks}}</td>
                                     <td>
-                                        <div class="d-flex">
-                                        <a href="{{ route('purchaseorderinfo.show', $purchase_order_info->id) }}" class="btn btn-outline-info btn-sm mx-1" style="height: 38px"><i class="fa-solid fa-file-pen"></i></a>
-                                    </div>
-                                </td>
+                                        <button type="button" class="btn btn-outline-info btn-sm mx-1" data-toggle="modal" data-target="#modal-{{$loop->iteration}}">
+                                            Stock Update
+                                        </button>
+                                        <td>@include('purchaseorderinfo.modal')</td>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

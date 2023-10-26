@@ -116,7 +116,7 @@
                                     <td>{{ $purchase_order_info->date}}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('purchaseorderinfo.show', $purchase_order_info->id) }}" class="btn btn-outline-success btn-sm mx-1" style="height: 38px"><i class="fa-solid fa-eye"></i></a>
+                                            <a href="{{ route('purchaseorderinfo.show', $purchase_order_info->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
                                         </div>
                                     </td>
                                 </tr>
