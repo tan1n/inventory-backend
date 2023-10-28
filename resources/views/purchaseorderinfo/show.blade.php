@@ -130,7 +130,7 @@
 </form>
 </div>
 <!-- BEGIN: Main Page Table Content -->
-<div class="container-fluid px-2 mt-10">
+<div class="container-fluid px-2 mt-5">
     <div class="card mb-4">
         <div class="card-body">
             <div class="row mx-n4">
@@ -147,7 +147,8 @@
                                 <th scope="col">UOM</th>
                                 <th scope="col">Color</th>
                                 <th scope="col">Size</th>
-                                <th scope="col">Quantity</th>
+                                <th scope="col">Order Quantity</th>
+                                <th scope="col">Received Quantity</th>
                                 <th scope="col">Value</th>
                                 <th scope="col">Style Name</th>
                                 <th scope="col">Count</th>
@@ -175,6 +176,7 @@
                                         $quantity =$purchase_order_item->quantity;
                                     @endphp
                                     <td>{{$quantity }}</td>
+                                    <td>{{$purchase_order_item->received_quantity }}</td>
                                     @php
                                         $value= $purchase_order_item->value
                                     @endphp
@@ -201,7 +203,6 @@
                                             Stock Update
                                         </button>
                                         @include('purchaseorderinfo.received-modal')
-                                        @include('purchaseorderinfo.rejected-modal')
                                     </td>
                                 </tr>
                                 @endforeach

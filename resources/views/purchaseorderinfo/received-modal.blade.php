@@ -17,17 +17,16 @@
                     </div>
                     <div class="col-md-12 d-flex justify-content-center my-3">
                         <label class="small mt-2 col-md-6" for="received_quantity"><h6>Received Quantity<span class="text-danger">*</span></h6></label>
-                        <input class="small form-control @error('received_quantity') is-invalid @enderror" id="received_quantity" name="received_quantity" type="text" placeholder="Received Quantity" value="{{ old('received_quantity') }}" autocomplete="off" required/>
+                        <input class="small form-control @error('received_quantity') is-invalid @enderror" id="received_quantity" name="received_quantity" type="number" placeholder="Received Quantity" value="{{ old('received_quantity') }}" autocomplete="off" required/>
                         @error('received_quantity')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
-                    <button type="button" class="btn btn-outline-danger mx-2 mt-2 px-5" data-dismiss="modal" data-toggle="modal" data-target="#modal-reject-{{$loop->iteration}}">
-                        Reject
-                    </button>
-                    <button type="submit" class="btn btn-primary mt-2 px-5">Receive</button>
+                    <button type="submit" value="in" name="receive" class="btn btn-outline-success m-2 px-3">Accept</button>
+                    <button type="submit" id="reject" value="reject" name="receive" class="btn btn-outline-danger m-2 px-3">Reject</button>
+                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="modal-receive-{{$loop->iteration}}" class="btn btn-outline-secondary m-2 px-3">Cancel</button>
                 </form>
             </div>
         </div>
