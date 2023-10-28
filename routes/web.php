@@ -75,7 +75,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/purchaseorderinfo', PurchaseOrderInfoController::class);
 
     //Route Purchase Item Status
-    Route::patch('/purchaseitemstatus/{purchaseitemstatus}', [PurchaseItemStatusController::class, 'reject'])->name('purchaseitemstatus.reject');
     Route::resource('/purchaseitemstatus', PurchaseItemStatusController::class);
     
 

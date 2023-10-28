@@ -197,10 +197,11 @@
                                     <td>{{ $purchase_order_item->status}}</td>
                                     <td>{{ $purchase_order_item->remarks}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-info btn-sm mx-1" data-toggle="modal" data-target="#modal-{{$loop->iteration}}">
+                                        <button type="button" class="btn btn-outline-info btn-sm mx-1" data-toggle="modal" data-target="#modal-receive-{{$loop->iteration}}">
                                             Stock Update
                                         </button>
-                                        <td>@include('purchaseorderinfo.modal')</td>
+                                        @include('purchaseorderinfo.received-modal')
+                                        @include('purchaseorderinfo.rejected-modal')
                                     </td>
                                 </tr>
                                 @endforeach
